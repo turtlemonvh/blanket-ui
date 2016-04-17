@@ -17,22 +17,52 @@ angular.module('blanketApp')
             });
         }
 
+        self.deleteWorker = function(worker) {
+            $log.log("Deleting worker", worker);
+            $http({
+                method: 'DELETE',
+                url: baseUrl + '/worker/' + worker.id
+            }).then(function(d) {
+                // Give it time to shut down before refreshing the list
+                $log.log("Deleting worker", worker);
+                $timeout(self.refreshList, 500);
+            }, function(d) {
+                $log.error("Problem deleting worker", worker);
+            });
+        }
+
         self.stopWorker = function(worker) {
             $log.log("Stopping worker", worker);
             $http({
                 method: 'PUT',
-                url: baseUrl + '/worker/' + worker.id + '/shutdown'
+                url: baseUrl + '/worker/' + worker.id + '/stop'
             }).then(function(d) {
                 // Give it time to shut down before refreshing the list
                 $log.log("Shut down worker", worker);
-                $timeout(self.refreshList, worker.checkInterval*1000 + 500);
+                $timeout(self.refreshList, 500);
             }, function(d) {
                 $log.error("Problem shutting down worker", worker);
             });
         }
 
+        self.restartWorker = function(worker) {
+            $log.log("Restarting worker", worker);
+            $http({
+                method: 'PUT',
+                url: baseUrl + '/worker/' + worker.id + '/restart'
+            }).then(function(d) {
+                // Give it time to shut down before refreshing the list
+                $log.log("Restarted worker", worker);
+                $timeout(self.refreshList, 500);
+            }, function(d) {
+                $log.error("Problem restarting worker", worker);
+            });
+        }
+
+
         self.launchWorker = function(workerConf) {
             $log.log("Creating new worker", workerConf);
+            workerConf.tags = workerConf.rawTags.split(",");
             $http({
                 method: 'POST',
                 url: baseUrl + '/worker/',
@@ -40,7 +70,7 @@ angular.module('blanketApp')
             }).then(function(d) {
                 // Give it time to start up before refreshing the list
                 $log.log("Launched worker", workerConf);
-                $timeout(self.refreshList, workerConf.checkInterval*1000 + 1000);
+                $timeout(self.refreshList, 500);
             }, function(d) {
                 $log.error("Problem launcing worker", workerConf);
             });
