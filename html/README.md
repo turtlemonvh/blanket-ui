@@ -19,6 +19,15 @@ Checking syntax of js files
 
     gulp lint
 
+## Integrating with main blanket project
+
+    # In html dir of this projkct
+    gulp build-app
+
+    # In blanket dir; re-grab binary data and rebuild
+    make update-bindata
+    make <platform>
+
 ## Tech stack
 
 * single page angular application served from index.html

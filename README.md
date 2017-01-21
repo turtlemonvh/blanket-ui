@@ -8,6 +8,10 @@ See README in `html` directory.
 
 ## TODO
 
+- show list of env variables and other features in big list on hover
+
+- show stdout and stderr logs
+
 - use card bordered areas to give everything a cleaner more organized look
 
 - like Ionic, use divs with a slight shadow that separates them from other content
@@ -17,6 +21,7 @@ See README in `html` directory.
     - solarized dark would be good
 
 - other UI
+    - check that everything renders ok on mobile
     - user should be able to upload files to include in a task run
     - add ability to shut down / restart main server from web ui
     - allow user to view and edit server configuration on UI
@@ -35,4 +40,9 @@ See README in `html` directory.
 
 - better browsing interface for files
     - instead of just a list, include modified time, size, etc.
+
+- show download count
+    - http://shields.io/
+
+
 

@@ -79,10 +79,10 @@ angular.module('blanketApp')
             if (self.taskFilterConfig.tags !== "") {
                 queryString += "&requiredTags=" + self.taskFilterConfig.tags;
             }
-            if (self.taskFilterConfig.taskTypes.length) {
+            if (self.taskFilterConfig.taskTypes && self.taskFilterConfig.taskTypes.length) {
                 queryString += "&types=" + _.join(self.taskFilterConfig.taskTypes, ",");
             }
-            if (self.taskFilterConfig.states.length) {
+            if (self.taskFilterConfig.states && self.taskFilterConfig.states.length) {
                 queryString += "&states=" + _.join(self.taskFilterConfig.states, ",");
             }
             var parsedStartDate = self.parseDate(self.taskFilterConfig.startDate);
