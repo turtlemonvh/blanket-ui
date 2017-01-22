@@ -1,48 +1,44 @@
 # Blanket UI
 
-A prototype UI plugin for blanket.
+A browser UI for [blanket-api](https://github.com/turtlemonvh/blanket-api).
 
-## Running
+## Quick start
 
-See README in `html` directory.
+Running locally with reload on change:
 
-## TODO
+    # Install
+    npm install
+    bower install
 
-- show list of env variables and other features in big list on hover
+    # Run dev server; build content too
+    gulp serve
 
-- show stdout and stderr logs
+Building compressed/minified version
 
-- use card bordered areas to give everything a cleaner more organized look
+    gulp build
 
-- like Ionic, use divs with a slight shadow that separates them from other content
+Checking syntax of js files
 
-- make it flannel colors (dark, grays) instead of so bright
-    - like a blanket
-    - solarized dark would be good
+    gulp lint
 
-- other UI
-    - check that everything renders ok on mobile
-    - user should be able to upload files to include in a task run
-    - add ability to shut down / restart main server from web ui
-    - allow user to view and edit server configuration on UI
-        - may need to allow them to trigger a restart
-    - allow user to back up database from UI
-    - add primitive main dashboard with recent activity
-    - add ability to add new task types
-    - allow editing task types on HTTP interface
-    - add confirmations for delete / stop commands
-    - bulk delete
-    - a way to show messages for things we have done (toast messages)
-        - https://github.com/CodeSeven/toastr4
-    - re-run a task that has run, or is stalled
-    - fix memory leak (was >500 mb when running for a while)
-    - "_cat" api that gives information similar to the command line, but over http
+## Integrating with main blanket project
 
-- better browsing interface for files
-    - instead of just a list, include modified time, size, etc.
+    # In html dir of this projkct
+    gulp build-app
 
-- show download count
-    - http://shields.io/
+    # In blanket dir; re-grab binary data and rebuild
+    make update-bindata
+    make <platform>
 
+## Tech stack
 
-
+* single page angular application served from index.html
+* bootstrap scss
+    * http://getbootstrap.com/css/#sass
+    * https://github.com/twbs/bootstrap-sass#d-npm--nodejs
+    * https://gist.github.com/ericbarnes/ac3ae075c97c1073869c
+* gulp / live reload
+    * https://browsersync.io/
+    * https://browsersync.io/docs/gulp/
+* angular js
+    * https://angularjs.org/
