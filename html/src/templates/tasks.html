@@ -200,8 +200,9 @@
         <tbody>
             <tr ng-repeat="task in data.tasks track by task.id">
                 <th scope="row">{{ ($index+1) }}</th>
-                <td ng-if="task.startedTs !== 0"><a ng-href="/#/task/{{task.id}}">{{ task.id | limitTo: 8 }}</a></td>
+                <td ng-if="task.startedTs !== 0"><a ui-sref="task-detail({ taskId: task.id })">{{ task.id | limitTo: 8 }}</a></td>
                 <td ng-if="task.startedTs === 0">{{ task.id | limitTo: 8 }}</td>
+
                 <td><a ng-href="{{baseUrl}}/task_type/{{task.type}}">{{ task.type }}</a></td>
                 <td>
                     <span

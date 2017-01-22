@@ -48,6 +48,7 @@ angular.module('blanketApp')
 
         self.loadTaskFilterConfig = function() {
             var conf = localStorage.getItem("blanket.taskFilters") || "{}";
+            $log.log("Loading task filters", conf);
             var o = JSON.parse(conf);
             _.each(o, function(v, k) {
                 self.taskFilterConfig[k] = v;
@@ -63,8 +64,6 @@ angular.module('blanketApp')
                 startDate: fc.startDate,
                 endDate: fc.endDate,
             }
-            $log.log("Setting filter config", self.taskFilterConfig);
-
             localStorage.setItem("blanket.taskFilters", JSON.stringify(self.taskFilterConfig));
             self.refreshTasks();
         }
@@ -76,7 +75,7 @@ angular.module('blanketApp')
             var queryString = '/task/?reverseSort=true';
             queryString += "&limit=" + self.queryMaxItems;
 
-            if (self.taskFilterConfig.tags !== "") {
+            if (self.taskFilterConfig.tags && self.taskFilterConfig.tags !== "") {
                 queryString += "&requiredTags=" + self.taskFilterConfig.tags;
             }
             if (self.taskFilterConfig.taskTypes && self.taskFilterConfig.taskTypes.length) {
