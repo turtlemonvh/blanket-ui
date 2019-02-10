@@ -1,5 +1,7 @@
 # Blanket UI
 
+> DEPRECATED (2019/02/10): The ui is now being managed directly in the [main blanket repo](https://github.com/turtlemonvh/blanket)
+
 A browser UI for [blanket-api](https://github.com/turtlemonvh/blanket-api).
 
 ## Quick start
